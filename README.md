@@ -11,3 +11,9 @@
   - pip install pipreqs
   - pipreqs . 
   - INFO: Successfully saved requirements file in .\requirements.txt
+- Resources used
+  - https://learnpython.com/blog/python-requirements-file/ - to add requirements.txt
+  - https://developers.google.com/maps/documentation/geocoding/requests-geocoding - to get latitude and longitude from address
+  - https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding#required_parameters - to get zipcode from latitude and longitude
+  - https://medium.com/black-tech-diva/hide-your-api-keys-7635e181a06c - hiding the keys using .gitignore
+  - https://stackoverflow.com/questions/5585957/get-latlng-from-zip-code-google-maps-api
