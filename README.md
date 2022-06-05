@@ -5,3 +5,4 @@
 - then tried sending them as individual values and directly embedding them into the url
 - didn't work
 - converted it to f string - it worked
+- to hide the api_key - created a config file and added that file to .gitignore folder
