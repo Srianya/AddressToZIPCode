@@ -7,3 +7,7 @@
 - converted it to f string - it worked
 - to hide the api_key - created a config file and added that file to .gitignore folder
 - used TKinter to make a UI with a canvas
+- Adding requirements.txt using 
+  - pip install pipreqs
+  - pipreqs . 
+  - INFO: Successfully saved requirements file in .\requirements.txt
