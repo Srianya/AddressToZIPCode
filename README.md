@@ -1,0 +1,7 @@
+- get an API key
+- how to format API key to pass it as a parameters
+- how to send lat and long values together in latlng paramater of reverse geocing api request
+- tried sending latlng as a tuple- didn't work
+- then tried sending them as individual values and directly embedding them into the url
+- didn't work
+- converted it to f string - it worked
