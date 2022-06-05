@@ -16,6 +16,7 @@ def get_ltd_lng():
     }
     response = requests.get(url="https://maps.googleapis.com/maps/api/geocode/json",params=params)
     response.raise_for_status()
+    # TODO: check if response is OK then only proceed
     data = response.json()
     geodata = dict()
     geodata['lat'] = data['results'][0]['geometry']['location']['lat']
@@ -32,6 +33,7 @@ def get_zipcode(latlng):
     }
     response = requests.get(url="https://maps.google.com/maps/api/geocode/json",params=params)
     data = response.json()
+    # TODO: check if response is OK then only proceed
     print(data)
 
 if __name__ == '__main__':
@@ -56,7 +58,8 @@ canvas.grid(row=0, column=0)
 address_entry = Entry(width=35)
 address_entry.grid(row=1, column=0)
 address_entry.focus()
-
+# TODO: get address from user via entry and send it to get_ltd_lng() to get the latitude and longitude
 zipcode_button = Button(text="Get me the zip code", highlightthickness=0)
 zipcode_button.grid(row=2, column=0)
+# TODO: press get the zip code button to get the zipcode for corresponding zipcode for the address
 window.mainloop()
