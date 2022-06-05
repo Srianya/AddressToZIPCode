@@ -6,3 +6,4 @@
 - didn't work
 - converted it to f string - it worked
 - to hide the api_key - created a config file and added that file to .gitignore folder
+- used TKinter to make a UI with a canvas
