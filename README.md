@@ -1,3 +1,4 @@
+Download [here](https://github.com/Asaxena-2120/API-Address-to-zipcode/releases)
 - get an API key
 - how to format API key to pass it as a parameters
 - how to send lat and long values together in latlng paramater of reverse geocing api request
