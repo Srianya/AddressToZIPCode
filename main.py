@@ -12,10 +12,9 @@ def get_ltd_lng():
     global ADDRESS
     ADDRESS = address_entry.get()
     #print(f"address: {ADDRESS}")
-    canvas.itemconfig(card_word, text=ADDRESS, fill="black")
+    canvas.itemconfig(card_word_input_address, text=f"{ADDRESS}", fill="Black")
     params = {
         'address': ADDRESS,
-        #'address': 'oshiwara industerial center goregaon west mumbai',
         'sensor': 'false',
         'region': 'india',
         'key': config.api_key,
@@ -24,31 +23,40 @@ def get_ltd_lng():
     response.raise_for_status()
     # TODO: check if response is OK then only proceed
     data = response.json()
-    geodata = dict()
-    geodata['lat'] = data['results'][0]['geometry']['location']['lat']
-    geodata['lng'] = data['results'][0]['geometry']['location']['lng']
-    #print(data)
-    #print((geodata['lat'],geodata['lng']))
-    return (geodata['lat'],geodata['lng'])
+    if data['status'] == 'OK':
+        geodata = dict()
+        geodata['lat'] = data['results'][0]['geometry']['location']['lat']
+        geodata['lng'] = data['results'][0]['geometry']['location']['lng']
+        #print(data)
+        #print((geodata['lat'],geodata['lng']))
+        return (geodata['lat'],geodata['lng'])
+    else:
+        return None
 
 
 def get_zipcode():
     latlng = get_ltd_lng()
-    params = {
-        'latlng': f"{latlng[0]},{latlng[1]}",
-        'key': config.api_key,
-    }
-    response = requests.get(url="https://maps.google.com/maps/api/geocode/json",params=params)
-    data = response.json()
-    # TODO: check if response is OK then only proceed
-    result = (data['results'][0]['address_components'])
-    zipcode = ""
-    for diction in result:
-        if diction['types'] == ['postal_code']:
-            zipcode = diction['long_name']
-            break
-    canvas.itemconfig(card_word, text=f"{ADDRESS}\n{zipcode}", fill="green")
-    address_entry.delete(0, END)
+    if latlng:
+        params = {
+            'latlng': f"{latlng[0]},{latlng[1]}",
+            'key': config.api_key,
+        }
+        response = requests.get(url="https://maps.google.com/maps/api/geocode/json",params=params)
+        data = response.json()
+        # TODO: check if response is OK then only proceed
+
+        if data['status'] == 'OK':
+            result = (data['results'][0]['address_components'])
+            zipcode = ""
+            for diction in result:
+                if diction['types'] == ['postal_code']:
+                    zipcode = diction['long_name']
+                    break
+            #canvas.itemconfig(card_word_input_address, text=f"{ADDRESS}", fill="Orange")
+            canvas.itemconfig(card_word_result_zipcode, text=f"{zipcode}", fill="green")
+            address_entry.delete(0, END)
+    else:
+        canvas.itemconfig(card_word_result_zipcode, text="You have entered incomplete address", fill="green")
 
 #if __name__ == '__main__':
 
@@ -65,7 +73,8 @@ canvas = Canvas(width=300, height=414)
 background_img = PhotoImage(file="background.png")
 canvas.create_image(150, 207, image=background_img)
 address_text = canvas.create_text(150, 207, text="Address", width=250, font=("Arial", 30, "bold"), fill="white")
-card_word = canvas.create_text(150, 263, text="", font=("Ariel", 10, "bold"))
+card_word_input_address = canvas.create_text(150, 250, text="", font=("Ariel", 10, "bold"))
+card_word_result_zipcode = canvas.create_text(150, 263, text="", font=("Ariel", 10, "bold"))
 canvas.grid(row=0, column=0)
 
 # Address Entry
