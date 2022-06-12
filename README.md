@@ -101,5 +101,5 @@ Adding the main.exe as executable file
    [df1]: <http://daringfireball.net/projects/markdown/>
    [Google API: reverse geocoding]: <https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding#required_parameters>
    [Pyinstaller]: <https://www.youtube.com/watch?v=UZX5kH72Yx4>
-  <http://twitter.com/tjholowaychuk>
+  
  
