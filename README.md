@@ -16,6 +16,7 @@ Download [here](https://github.com/Asaxena-2120/API-Address-to-zipcode/releases)
 - then copy the file from dist folder to the folder where all the dependencies are paresent
 - added status check for returned JSON data.
 - Added message if user entered an incomplete address.
+- Making code modular
 - Resources used
   - https://learnpython.com/blog/python-requirements-file/ - to add requirements.txt
   - https://developers.google.com/maps/documentation/geocoding/requests-geocoding - to get latitude and longitude from address
