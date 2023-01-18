@@ -103,3 +103,4 @@ Adding the main.exe as executable file
    [Pyinstaller]: <https://www.youtube.com/watch?v=UZX5kH72Yx4>
   
  
+![image](background.png)
